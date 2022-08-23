@@ -7,7 +7,7 @@ import { Home } from './pages/Home';
 import { Products } from './pages/Products';
 import { Reports } from './pages/Reports';
 import { ErrorPage } from './pages/ErrorPage';
-import './components/Loader/Loader.module.css';
+// import './components/Loader/Loader.css';
 
 function App() {
 	return (

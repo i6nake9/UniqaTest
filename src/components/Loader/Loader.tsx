@@ -1,4 +1,4 @@
-import './Loader.module.css';
+import './Loader.css';
 
 export const Loader = () => {
 	return <div className="lds-dual-ring" />;
