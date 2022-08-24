@@ -1,4 +1,3 @@
-import 'bootstrap/dist/css/bootstrap.min.css';
 import './layouts/Navbar/Navbar.module.css';
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
@@ -7,6 +6,7 @@ import { Home } from './pages/Home';
 import { Products } from './pages/Products';
 import { Reports } from './pages/Reports';
 import { ErrorPage } from './pages/ErrorPage';
+
 // import './components/Loader/Loader.css';
 
 function App() {

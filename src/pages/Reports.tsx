@@ -1,7 +1,11 @@
 import { useEffect, useState } from 'react';
 import { API_URL } from '../API';
 import { Loader } from '../components';
-import { Table } from '../components/Table/Table';
+import { BasicTable } from '../components';
+
+const onSort = (sortField: any) => {
+	console.log(sortField);
+};
 
 export const Reports = () => {
 	const [loading, setLoading] = useState(true);
@@ -24,7 +28,9 @@ export const Reports = () => {
 	return (
 		<div className="container">
 			<h1>Reports</h1>
-			<div>{loading ? <Loader /> : <Table data={data} />}</div>
+			<div>
+				{loading ? <Loader /> : <BasicTable data={data} onSort={onSort} />}
+			</div>
 		</div>
 	);
 };
