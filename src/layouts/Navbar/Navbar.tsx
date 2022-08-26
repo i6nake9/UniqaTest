@@ -15,7 +15,7 @@ export function NavigBar({ children, ...props }: NavBarProps) {
 					<NavLink to="/reports">Отчеты</NavLink>
 				</li>
 				<li>
-					<NavLink to="/products">Добавить</NavLink>
+					<NavLink to="/products">Ведомость</NavLink>
 				</li>
 			</ul>
 

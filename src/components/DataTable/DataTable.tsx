@@ -1,5 +1,4 @@
 import {
-	Box,
 	Button,
 	Paper,
 	Table,
@@ -8,65 +7,105 @@ import {
 	TableHead,
 	TableRow,
 } from '@mui/material';
+import { v4 as uuidv4 } from 'uuid';
 import TableContainer from '@mui/material/TableContainer/TableContainer';
-import { ModalEdit, ModalDelete } from '../index';
-
-const props = {
-	OnSort() {
-		return 'test';
-	},
-	data: [
-		{
-			id: 1,
-			company: 'Des',
-			description: ' Lorem',
-		},
-		{
-			id: 21,
-			company: 'Des',
-			description: ' Lorem',
-		},
-	],
-};
+import { useState } from 'react';
+import { ModalEdit } from '../index';
+import moment from 'moment';
+import SendIcon from '@mui/icons-material/Send';
 
 export const DataTable = () => {
+	const [data, setData] = useState<any[]>([]);
+	const onSubmit = (formData: any) => {
+		console.log(data);
+		setData([
+			...data,
+			{
+				...formData,
+				id: uuidv4(),
+				date: moment().format('DD-MM-YYYY hh:mm:ss'),
+			},
+		]);
+	};
+	const formatConfig = {
+		style: 'currency',
+		currency: 'UAH',
+		minimumFractionDigits: 2,
+		currencyDisplay: 'symbol',
+	};
+	const formatCurrencyUA = new Intl.NumberFormat('ua-UA', formatConfig);
+	const formatCurrencyUS = new Intl.NumberFormat('us-US', formatConfig);
+
+	const onDelete = (id: string) => {
+		setData(data.filter((item) => item.id !== id));
+	};
+
 	return (
 		<>
 			<TableContainer component={Paper}>
 				<Table sx={{ minWidth: 450 }} aria-label="simple table">
 					<TableHead>
 						<TableRow>
-							<TableCell>ID</TableCell>
-							<TableCell align="right">Компанія</TableCell>
-							<TableCell align="right">Ціна&nbsp;</TableCell>
+							<TableCell>Назва</TableCell>
+							<TableCell align="right">Дебіт</TableCell>
+							<TableCell align="right">Кредит&nbsp;</TableCell>
+							<TableCell align="right">Компанія&nbsp;</TableCell>
 							<TableCell align="right">Опис&nbsp;</TableCell>
-							<TableCell align="right">&nbsp;</TableCell>
+							<TableCell align="right">Дата створення&nbsp;</TableCell>
 							<TableCell align="right">&nbsp;</TableCell>
 						</TableRow>
 					</TableHead>
 					<TableBody>
-						{props.data.map((item: any) => (
+						{data.map((item: any) => (
 							<TableRow
 								key={item.id}
 								sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
 							>
 								<TableCell component="th" scope="row">
-									{item.id + Math.floor(Math.random() * (10 - 1) * 1)}
+									{item.name}
+								</TableCell>
+								<TableCell align="right">
+									{formatCurrencyUA.format(item.debit)}
+								</TableCell>
+								<TableCell align="right">
+									{formatCurrencyUA.format(item.credit)}
 								</TableCell>
 								<TableCell align="right">{item.company}</TableCell>
-								<TableCell align="right">item</TableCell>
 								<TableCell align="right">{item.description}</TableCell>
-								<TableCell className="btn-center">
-									<ModalEdit>Редагувати</ModalEdit>
-								</TableCell>
+								<TableCell align="right">{item.date}</TableCell>
+								{/* <TableCell className="btn-center"></TableCell> */}
 								<TableCell>
-									<ModalDelete>Видалити</ModalDelete>
+									<Button
+										variant="outlined"
+										endIcon={<SendIcon />}
+										onClick={() => onDelete(item.id)}
+									>
+										Видалити
+									</Button>
 								</TableCell>
 							</TableRow>
 						))}
+						<TableCell size="medium" align="left">
+							Сума
+						</TableCell>
+						<TableCell size="medium" align="left">
+							{formatCurrencyUA.format(
+								data
+									.map((item) => item.debit)
+									.reduce((prev, curr) => prev + curr, 0)
+							)}
+						</TableCell>
+						<TableCell size="medium" align="left">
+							{formatCurrencyUA.format(
+								data
+									.map((item) => item.credit)
+									.reduce((prev, curr) => prev + curr, 0)
+							)}
+						</TableCell>
 					</TableBody>
 				</Table>
 			</TableContainer>
+			<ModalEdit onSubmit={onSubmit}>Додати</ModalEdit>
 		</>
 	);
 };

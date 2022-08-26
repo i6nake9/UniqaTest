@@ -6,6 +6,7 @@ import { Home } from './pages/Home';
 import { Products } from './pages/Products';
 import { Reports } from './pages/Reports';
 import { ErrorPage } from './pages/ErrorPage';
+import './App.css';
 
 // import './components/Loader/Loader.css';
 

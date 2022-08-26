@@ -1,13 +1,6 @@
 import { useEffect, useState } from 'react';
 import { API_URL } from '../API';
-import {
-	CurrencyInput,
-	TableInput,
-	Toolbar,
-	DataTable,
-	Loader,
-	BasicTable,
-} from '../components';
+import { DataTable, Loader } from '../components';
 import './home.css';
 
 const onSort = () => {};

@@ -92,13 +92,14 @@ export const BasicTable = (props: any) => {
 								sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
 							>
 								<TableCell component="th" scope="row">
-									{item.id + Math.floor(Math.random() * (10 - 1) * 1)}
+									{item.id}
 								</TableCell>
 								<TableCell align="right">{item.company}</TableCell>
 								<TableCell align="right">{`${Math.floor(
 									item.value / currency.value
 								)} ${currency.symbol}`}</TableCell>
 								<TableCell align="right">{item.description}</TableCell>
+								<TableCell align="right">{item.dates}</TableCell>
 							</TableRow>
 						))}
 					</TableBody>
