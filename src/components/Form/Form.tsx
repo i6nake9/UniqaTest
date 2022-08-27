@@ -24,7 +24,13 @@ export const Form = ({ onSubmit }: { onSubmit: (data: any) => void }) => {
 					})}
 					action=""
 				>
-					<option value=""></option>
+					<select {...register('currency', { required: false })}>
+						<option value="USD">USD</option>
+						<option selected value="UAH">
+							UAH
+						</option>
+						<option value="EUR">EUR</option>
+					</select>
 					<label>
 						Назва:
 						<input

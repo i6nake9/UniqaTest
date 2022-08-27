@@ -1,5 +1,6 @@
 import {
 	Button,
+	ListItem,
 	Paper,
 	Table,
 	TableBody,
@@ -33,8 +34,22 @@ export const DataTable = () => {
 		minimumFractionDigits: 2,
 		currencyDisplay: 'symbol',
 	};
+
+	const formatConfigUSD = {
+		style: 'currency',
+		currency: 'USD',
+		minimumFractionDigits: 2,
+		currencyDisplay: 'symbol',
+	};
+	const formatConfigEUR = {
+		style: 'currency',
+		currency: 'EUR',
+		minimumFractionDigits: 2,
+		currencyDisplay: 'symbol',
+	};
 	const formatCurrencyUA = new Intl.NumberFormat('ua-UA', formatConfig);
-	const formatCurrencyUS = new Intl.NumberFormat('us-US', formatConfig);
+	const formatCurrencyUS = new Intl.NumberFormat('us-US', formatConfigUSD);
+	const formatCurrencyEUR = new Intl.NumberFormat('us-US', formatConfigEUR);
 
 	const onDelete = (id: string) => {
 		setData(data.filter((item) => item.id !== id));
@@ -42,7 +57,7 @@ export const DataTable = () => {
 
 	return (
 		<>
-			<TableContainer component={Paper}>
+			<TableContainer component={Paper} style={{ margin: '0 25px 0 25px' }}>
 				<Table sx={{ minWidth: 450 }} aria-label="simple table">
 					<TableHead>
 						<TableRow>
@@ -65,10 +80,22 @@ export const DataTable = () => {
 									{item.name}
 								</TableCell>
 								<TableCell align="right">
-									{formatCurrencyUA.format(item.debit)}
+									{item.currency === 'UAH'
+										? formatCurrencyUA.format(item.debit)
+										: item.currency === 'USD'
+										? formatCurrencyUS.format(item.debit)
+										: item.currency === 'EUR'
+										? formatCurrencyEUR.format(item.debit)
+										: 'Error'}
 								</TableCell>
 								<TableCell align="right">
-									{formatCurrencyUA.format(item.credit)}
+									{item.currency === 'UAH'
+										? formatCurrencyUA.format(item.credit)
+										: item.currency === 'USD'
+										? formatCurrencyUS.format(item.credit)
+										: item.currency === 'EUR'
+										? formatCurrencyEUR.format(item.debit)
+										: 'Error'}
 								</TableCell>
 								<TableCell align="right">{item.company}</TableCell>
 								<TableCell align="right">{item.description}</TableCell>
@@ -88,19 +115,46 @@ export const DataTable = () => {
 						<TableCell size="medium" align="left">
 							Сума
 						</TableCell>
-						<TableCell size="medium" align="left">
-							{formatCurrencyUA.format(
-								data
-									.map((item) => item.debit)
-									.reduce((prev, curr) => prev + curr, 0)
-							)}
+						<TableCell size="medium" align="right">
+							<div>
+								{formatCurrencyUA.format(
+									data
+										.map((item) => {
+											if (item.currency === 'UAH') {
+												return item.debit;
+											}
+											return 0;
+										})
+										.reduce((prev, curr) => prev + curr, 0)
+								)}
+							</div>
+							<div>
+								{formatCurrencyUS.format(
+									data
+										.map((item) => {
+											if (item.currency === 'USD') {
+												return item.debit;
+											}
+											return 0;
+										})
+										.reduce((prev, curr) => prev + curr, 0)
+								)}
+							</div>
+							<div>
+								{formatCurrencyEUR.format(
+									data
+										.map((item) => {
+											if (item.currency === 'EUR') {
+												return item.debit;
+											}
+											return 0;
+										})
+										.reduce((prev, curr) => prev + curr, 0)
+								)}
+							</div>
 						</TableCell>
-						<TableCell size="medium" align="left">
-							{formatCurrencyUA.format(
-								data
-									.map((item) => item.credit)
-									.reduce((prev, curr) => prev + curr, 0)
-							)}
+						<TableCell size="medium" align="right">
+							test!
 						</TableCell>
 					</TableBody>
 				</Table>

@@ -33,7 +33,12 @@ export const ModalEdit = ({ children, onSubmit }: ModalProps): JSX.Element => {
 	};
 	return (
 		<div>
-			<Button variant="outlined" endIcon={<SendIcon />} onClick={handleOpen}>
+			<Button
+				style={{ margin: '25px 0 0 25px' }}
+				variant="outlined"
+				endIcon={<SendIcon />}
+				onClick={handleOpen}
+			>
 				{children}
 			</Button>
 			<Modal
@@ -43,7 +48,6 @@ export const ModalEdit = ({ children, onSubmit }: ModalProps): JSX.Element => {
 				aria-describedby="parent-modal-description"
 			>
 				<Box sx={{ ...style, width: 400 }}>
-					<h2 id="parent-modal-title">Text in a modal</h2>
 					<Form onSubmit={onSubmit} />
 				</Box>
 			</Modal>
