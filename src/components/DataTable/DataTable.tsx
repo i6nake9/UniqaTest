@@ -154,7 +154,42 @@ export const DataTable = () => {
 							</div>
 						</TableCell>
 						<TableCell size="medium" align="right">
-							test!
+							<div>
+								{formatCurrencyUA.format(
+									data
+										.map((item) => {
+											if (item.currency === 'UAH') {
+												return item.debit;
+											}
+											return 0;
+										})
+										.reduce((prev, curr) => prev + curr, 0)
+								)}
+							</div>
+							<div>
+								{formatCurrencyUS.format(
+									data
+										.map((item) => {
+											if (item.currency === 'USD') {
+												return item.debit;
+											}
+											return 0;
+										})
+										.reduce((prev, curr) => prev + curr, 0)
+								)}
+							</div>
+							<div>
+								{formatCurrencyEUR.format(
+									data
+										.map((item) => {
+											if (item.currency === 'EUR') {
+												return item.debit;
+											}
+											return 0;
+										})
+										.reduce((prev, curr) => prev + curr, 0)
+								)}
+							</div>
 						</TableCell>
 					</TableBody>
 				</Table>
