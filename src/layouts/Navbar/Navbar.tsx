@@ -10,14 +10,14 @@ export function NavigBar({ children, ...props }: NavBarProps) {
 					<ul>
 						<li>
 							<NavLink to="/" style={{}}>
-								Главная
+								Головна
 							</NavLink>
 						</li>
 						<li>
-							<NavLink to="/reports">Отчеты</NavLink>
+							<NavLink to="/reports">Звіти</NavLink>
 						</li>
 						<li>
-							<NavLink to="/products">Ведомость</NavLink>
+							<NavLink to="/products">Відомість</NavLink>
 						</li>
 					</ul>
 				</div>

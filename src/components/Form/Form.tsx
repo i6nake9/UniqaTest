@@ -18,7 +18,6 @@ export const Form = ({ onSubmit }: { onSubmit: (data: any) => void }) => {
 				<form
 					onSubmit={handleSubmit((data: any) => {
 						onSubmit(data);
-						console.log(data);
 
 						reset();
 					})}
@@ -31,9 +30,7 @@ export const Form = ({ onSubmit }: { onSubmit: (data: any) => void }) => {
 								className="select-currency"
 								{...register('currency', { required: false })}
 							>
-								<option selected value="UAH">
-									UAH
-								</option>
+								<option value="UAH">UAH</option>
 								<option value="USD">USD</option>
 								<option value="EUR">EUR</option>
 							</select>

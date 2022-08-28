@@ -3,8 +3,6 @@ import { API_URL } from '../API';
 import { DataTable, Loader } from '../components';
 import './home.css';
 
-const onSort = () => {};
-
 export const Home = () => {
 	const [loading, setLoading] = useState(true);
 	const [data, setData] = useState(null);
@@ -25,7 +23,7 @@ export const Home = () => {
 	}, []);
 	return (
 		<div className="container">
-			<h1>Reports</h1>
+			<h1>Головна</h1>
 			<div>{loading ? <Loader /> : <DataTable />}</div>
 		</div>
 	);

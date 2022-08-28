@@ -1,6 +1,5 @@
 import {
 	Button,
-	ListItem,
 	Paper,
 	Table,
 	TableBody,
@@ -18,7 +17,6 @@ import SendIcon from '@mui/icons-material/Send';
 export const DataTable = () => {
 	const [data, setData] = useState<any[]>([]);
 	const onSubmit = (formData: any) => {
-		console.log(data);
 		setData([
 			...data,
 			{
@@ -194,6 +192,7 @@ export const DataTable = () => {
 					</TableBody>
 				</Table>
 			</TableContainer>
+
 			<ModalEdit onSubmit={onSubmit}>Додати</ModalEdit>
 		</>
 	);

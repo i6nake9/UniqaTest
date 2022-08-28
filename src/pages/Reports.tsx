@@ -27,7 +27,7 @@ export const Reports = () => {
 	}, []);
 	return (
 		<div className="container">
-			<h1>Reports</h1>
+			<h1>Звіти</h1>
 			<div>
 				{loading ? <Loader /> : <BasicTable data={data} onSort={onSort} />}
 			</div>
