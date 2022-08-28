@@ -20,63 +20,9 @@ const EUR = {
 	symbol: 'EUR',
 };
 
-// export const createTable = (props: any) => {
-// 	const [currency, setCurrency] = useState(UAH);
-// 	return (
-// 		<>
-// 			<button onClick={() => setCurrency(UAH)}>UAH</button>
-// 			<button onClick={() => setCurrency(USD)}>USD</button>
-// 			<button onClick={() => setCurrency(EUR)}>EUR</button>
-// 			<table className="table">
-// 				<thead>
-// 					<tr>
-// 						<th scope="col">ID</th>
-// 						<th scope="col">Ціна</th>
-// 						<th scope="col">Компанія</th>
-// 						<th scope="col">Опис</th>
-// 					</tr>
-// 				</thead>
-// 				<tbody>
-// 					{props.data.map((item: any): any => (
-// 						<tr key={item.id}>
-// 							<td>{item.id}</td>
-// 							<td>{`${Math.floor(item.value / currency.value)} ${
-// 								currency.symbol
-// 							}`}</td>
-// 							<td>{item.company}</td>
-// 							<td>{item.description}</td>
-// 						</tr>
-// 					))}
-// 				</tbody>
-// 			</table>
-// 		</>
-// 	);
-// };
-
 export const BasicTable = (props: any) => {
 	const [currency, setCurrency] = useState(UAH);
-	const formatConfig = {
-		style: 'currency',
-		currency: 'UAH',
-		minimumFractionDigits: 2,
-		currencyDisplay: 'symbol',
-	};
 
-	const formatConfigUSD = {
-		style: 'currency',
-		currency: 'USD',
-		minimumFractionDigits: 2,
-		currencyDisplay: 'symbol',
-	};
-	const formatConfigEUR = {
-		style: 'currency',
-		currency: 'EUR',
-		minimumFractionDigits: 2,
-		currencyDisplay: 'symbol',
-	};
-	const formatCurrencyUA = new Intl.NumberFormat('ua-UA', formatConfig);
-	const formatCurrencyUS = new Intl.NumberFormat('us-US', formatConfigUSD);
-	const formatCurrencyEUR = new Intl.NumberFormat('us-US', formatConfigEUR);
 	return (
 		<>
 			<button onClick={() => setCurrency(UAH)}>UAH</button>
