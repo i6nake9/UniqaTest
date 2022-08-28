@@ -14,7 +14,7 @@ export const Form = ({ onSubmit }: { onSubmit: (data: any) => void }) => {
 	return (
 		<>
 			<div>
-				<h1>React Hook form</h1>
+				<h1>Додати</h1>
 				<form
 					onSubmit={handleSubmit((data: any) => {
 						onSubmit(data);
@@ -24,13 +24,21 @@ export const Form = ({ onSubmit }: { onSubmit: (data: any) => void }) => {
 					})}
 					action=""
 				>
-					<select {...register('currency', { required: false })}>
-						<option value="USD">USD</option>
-						<option selected value="UAH">
-							UAH
-						</option>
-						<option value="EUR">EUR</option>
-					</select>
+					<div className="select-currenty">
+						<label>
+							Виберіть валюту
+							<select
+								className="select-currency"
+								{...register('currency', { required: false })}
+							>
+								<option selected value="UAH">
+									UAH
+								</option>
+								<option value="USD">USD</option>
+								<option value="EUR">EUR</option>
+							</select>
+						</label>
+					</div>
 					<label>
 						Назва:
 						<input

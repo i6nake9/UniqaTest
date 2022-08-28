@@ -159,7 +159,7 @@ export const DataTable = () => {
 									data
 										.map((item) => {
 											if (item.currency === 'UAH') {
-												return item.debit;
+												return item.credit;
 											}
 											return 0;
 										})
@@ -171,7 +171,7 @@ export const DataTable = () => {
 									data
 										.map((item) => {
 											if (item.currency === 'USD') {
-												return item.debit;
+												return item.credit;
 											}
 											return 0;
 										})
@@ -183,7 +183,7 @@ export const DataTable = () => {
 									data
 										.map((item) => {
 											if (item.currency === 'EUR') {
-												return item.debit;
+												return item.credit;
 											}
 											return 0;
 										})
